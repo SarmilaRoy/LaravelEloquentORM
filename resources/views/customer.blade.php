@@ -38,14 +38,14 @@
             </nav>
         </div>
     </div>
-        <form action="{{ url('/customer') }}" method="POST">
+        <form action="{{ $url }}" method="POST">
             @csrf
             <div class="container mt-4 card p-3 bg-white">
-                <h3 class="text-center text-primary">Customer Registration</h3>
+                <h3 class="text-center text-primary">{{ $title }}</h3>
                 <div class="row">
                     <div class="form-group col-md-6 required">
                         <label for="">Name:</label>
-                        <input type="text" name="name" id="" class="form-control" />
+                        <input type="text" name="name" id="" class="form-control" value="{{ $customer->name }}" />
                         <span class="text-danger">
                             @error('name')
                                 {{ $message }}
@@ -55,7 +55,7 @@
 
                     <div class="form-group col-md-6 required">
                         <label for="">Email:</label>
-                        <input type="text" name="email" id="" class="form-control" />
+                        <input type="text" name="email" id="" class="form-control" value="{{ $customer->email }}" />
                         <span class="text-danger">
                             @error('email')
                                 {{ $message }}
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="form-group col-md-6 required">
                         <label for="">Password:</label>
-                        <input type="password" name="password" id="" class="form-control" />
+                        <input type="password" name="password" id="" class="form-control"  />
                         <span class="text-danger">
                             @error('password')
                                 {{ $message }}
@@ -86,9 +86,9 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="">Country:</label>
-                        <input type="text" name="country" id="" class="form-control" />
+                        <input type="text" name="country" id="" class="form-control" value="{{ $customer->country }} "/>
                         <span class="text-danger">
-                            @error('name')
+                            @error('country')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -96,9 +96,9 @@
 
                     <div class="form-group col-md-6">
                         <label for="">State:</label>
-                        <input type="text" name="state" id="" class="form-control" />
+                        <input type="text" name="state" id="" class="form-control" value="{{ $customer->state }}" />
                         <span class="text-danger">
-                            @error('name')
+                            @error('state')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -107,9 +107,9 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="">Address:</label>
-                        <input type="text" name="address" id="" class="form-control" />
+                        <input type="text" name="address" id="" class="form-control" value="{{ $customer->address }}" />
                         <span class="text-danger">
-                            @error('name')
+                            @error('address')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -119,23 +119,26 @@
                     <div class="form-group col-md-6">
                         <label for="">Gender:</label><br>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="gender" value="M" checked>
+                            <input type="radio" class="form-check-input" name="gender" value="M"
+                            {{ $customer->gender == "M" ? "checked" : ""}} >
                             <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="gender" value="F">
+                            <input type="radio" class="form-check-input" name="gender" value="F"
+                            {{ $customer->gender == "F" ? "checked" : ""}}>
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="gender" value="O">
+                            <input type="radio" class="form-check-input" name="gender" value="O"
+                            {{ $customer->gender == "O" ? "checked" : ""}}>
                             <label class="form-check-label" for="other">Other</label>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="">Date of birth:</label>
-                        <input type="date" name="dob" id="" class="form-control" />
+                        <input type="date" name="dob" id="" class="form-control" value="{{ $customer->dob }}" />
                         <span class="text-danger">
-                            @error('name')
+                            @error('dob')
                                 {{ $message }}
                             @enderror
                         </span>

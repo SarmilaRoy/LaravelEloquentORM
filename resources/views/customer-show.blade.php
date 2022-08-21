@@ -53,6 +53,7 @@
                     <th>Email</th>
                     <th>Gender</th>
                     <th>DOB</th>
+                    <th>Address</th>
                     <th>State</th>
                     <th>Country</th>
                     <th>Status</th>
@@ -74,6 +75,7 @@
                             @endif
                         </td>
                         <td>{{ $customer->dob }}</td>
+                        <td>{{ $customer->address }}</td>
                         <td>{{ $customer->state }}</td>
                         <td>{{ $customer->country }}</td>
                         <td>
@@ -88,7 +90,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('') }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></i></a>
+                            <a href="{{ route('customer.edit',['id' => $customer->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></i></a>
                             {{-- <a href="{{ url('/customer/delete/') }}/{{ $customer->id }}" onclick="return confirm('are you sure to delete?')" class="btn btn-sm btn-danger"><i class="fa fa-times "></i></a> --}}
                             <a href="{{ route('customer.delete',['id' => $customer->id])}}" onclick="return confirm('are you sure to delete?')" class="btn btn-sm btn-danger"><i class="fa fa-times "></i></a>
                         </td>

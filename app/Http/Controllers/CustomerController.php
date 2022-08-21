@@ -8,11 +8,15 @@ use\App\Models\Customer;
 class CustomerController extends Controller
 {
     public function create(){
-        return view('customer');
+        $url=url('/customer');
+        $customer=new Customer();
+        $title="Customer Registration";
+        $data=compact('url','title','customer');
+        return view('customer')->with($data);
     }
     public function store(Request $request){
-        echo '<pre>';
-        print_r($request->all());
+        // echo '<pre>';
+        // print_r($request->all());
 
         $customer=new Customer();
         $customer->name=$request['name'];
@@ -49,4 +53,38 @@ class CustomerController extends Controller
         return redirect('/customer/show');
 
     }
+
+    public function editCustomer($id){
+       
+
+        $customer=Customer::find($id);
+        if(is_null($customer)){
+            return redirect('/customer/show');
+            
+        }
+        else{
+            $title="Update Registration";
+            $url=url('/customer/update') . "/" .$id;
+            $data=compact('customer','url','title');
+            return view('customer')->with($data);
+            
+        }
+        
+
+    }
+    public function updateCustomer($id,Request $request){
+        $updateCustomer=Customer::find($id);
+        $updateCustomer->name=$request['name'];
+        $updateCustomer->email=$request['email'];
+        $updateCustomer->gender=$request['gender'];
+        $updateCustomer->address=$request['address'];
+        $updateCustomer->state=$request['state'];
+        $updateCustomer->country=$request['country'];
+        $updateCustomer->dob=$request['dob'];
+        $updateCustomer->save();
+        session()->flash("msg","Customer has been updated Successfully!!");
+        return redirect('/customer/show');
+    }
+    
+
 }
