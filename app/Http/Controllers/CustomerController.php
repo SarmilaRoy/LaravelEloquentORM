@@ -7,7 +7,7 @@ use\App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index(){
+    public function create(){
         return view('customer');
     }
     public function store(Request $request){

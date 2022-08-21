@@ -16,7 +16,7 @@ use\App\Http\Controllers\CustomerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
@@ -29,7 +29,7 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/customer', [CustomerController::class,'index']);
+Route::get('/customer/create', [CustomerController::class,'create'])->name('customer.create');
 
 Route::post('/customer', [CustomerController::class,'store']);
 Route::get('/customer/show', [CustomerController::class,'showCustomer']);
