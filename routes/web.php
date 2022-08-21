@@ -32,5 +32,7 @@ Route::get('/', function () {
 Route::get('/customer', [CustomerController::class,'index']);
 
 Route::post('/customer', [CustomerController::class,'store']);
+Route::get('/customer/show', [CustomerController::class,'showCustomer']);
+
 
 

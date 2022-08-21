@@ -24,7 +24,15 @@ class CustomerController extends Controller
         $customer->dob=$request['dob'];
         $customer->password=md5($request['password']);
         $customer->save();
+        session()->flash("msg","Customer has been added Successfully!!");
+        return redirect('/customer/show');
+        
 
+    }
 
+    public function showCustomer(){
+        $customers=Customer::all();
+        $data=compact('customers');
+        return view('customer-show')->with($data);
     }
 }
