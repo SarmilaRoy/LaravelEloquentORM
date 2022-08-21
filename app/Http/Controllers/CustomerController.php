@@ -35,4 +35,18 @@ class CustomerController extends Controller
         $data=compact('customers');
         return view('customer-show')->with($data);
     }
+
+    public function deleteCustomer($id){
+        // echo $id;
+        // die;
+        // Customer::find($id)->delete();
+        // return redirect()->back();
+
+        $deleteCustomer=Customer::find($id);
+        if(!is_null($deleteCustomer)){
+            $deleteCustomer->delete();
+        }
+        return redirect('/customer/show');
+
+    }
 }

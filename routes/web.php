@@ -33,6 +33,7 @@ Route::get('/customer/create', [CustomerController::class,'create'])->name('cust
 
 Route::post('/customer', [CustomerController::class,'store']);
 Route::get('/customer/show', [CustomerController::class,'showCustomer']);
+Route::get('/customer/delete/{id}', [CustomerController::class,'deleteCustomer'])->name('customer.delete');
 
 
 

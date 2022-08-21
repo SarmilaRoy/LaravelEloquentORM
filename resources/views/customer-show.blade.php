@@ -88,8 +88,9 @@
                             @endif
                         </td>
                         <td>
-                            <a href=" " onclick="return confirm('are you sure to delete?')"
-                                class="btn btn-sm btn-danger"><i class="fa fa-times "></i></a>
+                            <a href="{{ url('') }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></i></a>
+                            {{-- <a href="{{ url('/customer/delete/') }}/{{ $customer->id }}" onclick="return confirm('are you sure to delete?')" class="btn btn-sm btn-danger"><i class="fa fa-times "></i></a> --}}
+                            <a href="{{ route('customer.delete',['id' => $customer->id])}}" onclick="return confirm('are you sure to delete?')" class="btn btn-sm btn-danger"><i class="fa fa-times "></i></a>
                         </td>
                     </tr>
                 @endforeach
